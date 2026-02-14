@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day</title>
+    <style>
+        /* Import Font yang Elegan dan Modern */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Great+Vibes&display=swap');
+
+        :root {
+            --bg-color: #050505; /* Hitam pekat */
+            --card-bg: rgba(255, 255, 255, 0.05); /* Efek kaca transparan */
+            --accent-pink: #ff1493; /* Deep Pink */
+            --glow-pink: #ff69b4; /* Hot Pink */
+            --text-white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Kunci agar scroll menjadi halus */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden; /* Mencegah scroll ke samping */
+        }
+
+        /* --- Background Animation (Floating Hearts Global) --- */
+        .bg-hearts {
+            position: fixed; /* Agar background tetap ikut saat scroll */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .heart-particle {
+            position: absolute;
+            bottom: -10vh;
+            background-color: var(--accent-pink);
+            width: 15px;
+            height: 15px;
+            transform: rotate(45deg);
+            opacity: 0;
+            animation: floatUp 10s infinite linear;
+        }
+
+        .heart-particle::before,
+        .heart-particle::after {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: var(--accent-pink);
+            border-radius: 50%;
+        }
+
+        .heart-particle::before { top: -8px; left: 0; }
+        .heart-particle::after { top: 0; left: -8px; }
+
+        /* Variasi animasi particle */
+        .h1 { left: 10%; animation-duration: 8s; opacity: 0.3; transform: scale(0.5) rotate(45deg); }
+        .h2 { left: 30%; animation-duration: 12s; opacity: 0.5; animation-delay: 2s; }
+        .h3 { left: 50%; animation-duration: 6s; opacity: 0.2; transform: scale(0.8) rotate(45deg); animation-delay: 1s; }
+        .h4 { left: 70%; animation-duration: 9s; opacity: 0.4; animation-delay: 4s; }
+        .h5 { left: 90%; animation-duration: 11s; opacity: 0.6; transform: scale(1.2) rotate(45deg); animation-delay: 3s; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(45deg) scale(1); opacity: 0; }
+            20% { opacity: 0.6; }
+            100% { transform: translateY(-120vh) rotate(45deg) scale(1); opacity: 0; }
+        }
+
+        /* --- SECTION 1: KARTU UCAPAN --- */
+        .section-one {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 20, 147, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.2);
+            max-width: 500px;
+            width: 90%;
+            animation: fadeIn 2s ease-out;
+            z-index: 10;
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--glow-pink);
+            text-shadow: 0 0 10px var(--accent-pink);
+            margin-bottom: 1rem;
+            animation: pulseText 3s infinite ease-in-out;
+        }
+
+        .names {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .names span {
+            color: var(--accent-pink);
+        }
+
+        .message {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        /* Main Heart Icon */
+        .main-heart {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-pink);
+            display: inline-block;
+            margin: 0 auto;
+            transform: rotate(45deg);
+            position: relative;
+            animation: heartBeat 1.2s infinite;
+            box-shadow: 0 0 20px var(--accent-pink);
+        }
+
+        .main-heart::before, .main-heart::after {
+            content: "";
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-pink);
+            border-radius: 50%;
+            position: absolute;
+        }
+        .main-heart::before { top: -30px; left: 0; }
+        .main-heart::after { top: 0; left: -30px; }
+
+        /* Button Style */
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--glow-pink);
+            border: 2px solid var(--glow-pink);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: var(--glow-pink);
+            color: #000;
+            box-shadow: 0 0 20px var(--glow-pink);
+            transform: scale(1.05);
+        }
+
+        /* --- SECTION 2: SURPRISE / PETASAN --- */
+        #surprise-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Big Text for Surprise */
+        .big-love-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            color: #fff;
+            z-index: 2;
+            text-shadow: 0 0 20px var(--accent-pink);
+            animation: popIn 1.5s ease-out forwards;
+            padding: 0 20px;
+        }
+        
+        .big-love-text span {
+            color: var(--accent-pink);
+            display: block;
+            font-size: 3rem;
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        /* Efek Ledakan/Petasan (Ripple Effect) */
+        .explosion-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            z-index: 1;
+        }
+
+        .ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border: 5px solid var(--accent-pink);
+            border-radius: 50%;
+            opacity: 0;
+            animation: ripple 3s linear infinite;
+        }
+
+        .ring:nth-child(2) { animation-delay: 1s; border-color: var(--glow-pink); }
+        .ring:nth-child(3) { animation-delay: 2s; border-color: #fff; }
+
+        /* Giant Heart Background */
+        .giant-heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--accent-pink), transparent);
+            opacity: 0.3;
+            z-index: 0;
+            filter: blur(30px);
+            animation: giantPulse 2s infinite;
+        }
+        .giant-heart::before, .giant-heart::after {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: inherit;
+            border-radius: 50%;
+            filter: blur(30px);
+        }
+        .giant-heart::before { top: -100px; left: 0; }
+        .giant-heart::after { top: 0; left: -100px; }
+
+
+        /* --- Keyframes --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heartBeat {
+            0% { transform: rotate(45deg) scale(1); }
+            14% { transform: rotate(45deg) scale(1.3); }
+            28% { transform: rotate(45deg) scale(1); }
+            42% { transform: rotate(45deg) scale(1.3); }
+            70% { transform: rotate(45deg) scale(1); }
+        }
+
+        @keyframes pulseText {
+            0%, 100% { text-shadow: 0 0 10px var(--accent-pink); }
+            50% { text-shadow: 0 0 25px var(--glow-pink), 0 0 5px #fff; }
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes ripple {
+            0% { width: 0; height: 0; opacity: 1; border-width: 5px; }
+            100% { width: 800px; height: 800px; opacity: 0; border-width: 0px; }
+        }
+
+        @keyframes giantPulse {
+            0% { transform: translate(-50%, -50%) rotate(45deg) scale(1); opacity: 0.2; }
+            50% { transform: translate(-50%, -50%) rotate(45deg) scale(1.2); opacity: 0.4; }
+            100% { transform: translate(-50%, -50%) rotate(45deg) scale(1); opacity: 0.2; }
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .big-love-text { font-size: 3rem; }
+            .big-love-text span { font-size: 1.5rem; }
+            .ripple { animation-duration: 2s; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Background Animation (Floating Hearts) - Tetap ada di seluruh halaman -->
+    <div class="bg-hearts">
+        <div class="heart-particle h1"></div>
+        <div class="heart-particle h2"></div>
+        <div class="heart-particle h3"></div>
+        <div class="heart-particle h4"></div>
+        <div class="heart-particle h5"></div>
+    </div>
+
+    <!-- SECTION 1: KARTU AWAL -->
+    <div class="section-one">
+        <div class="container">
+            <div style="height: 100px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                <div class="main-heart"></div>
+            </div>
+
+            <h1>Happy Valentine</h1>
+            
+            <div class="names">
+                For <span>Mellody Queen of Roblox</span>
+            </div>
+
+            <p class="message">
+                There are people who make the world feel a little brighter just by being themselves, and you are one of them. Happy Valentine's Day, and thank you for responding to my messages so often.
+            </p>
+
+            <!-- Tombol Mengarah ke ID section bawah -->
+            <a href="#surprise-section" class="btn">Click Me ❤️</a>
+            
+            <div style="margin-top: 20px; font-size: 0.8rem; color: #555;">
+                From: <span>Patric Your Future</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: KEJUTAN / ANIMASI BAWAH -->
+    <div id="surprise-section">
+        
+        <!-- Elemen Animasi Petasan / Ripple -->
+        <div class="explosion-bg">
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+        </div>
+
+        <!-- Elemen Animasi Hati Raksasa Berdenyut -->
+        <div class="giant-heart"></div>
+
+        <!-- Teks Besar -->
+        <div class="big-love-text">
+            Happy Valentine Day
+            <!-- Ganti Nama Di Sini -->
+            <span>Mellody</span>
+        </div>
+
+    </div>
+
+</body>
+</html>
